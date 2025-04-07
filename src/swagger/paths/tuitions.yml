@@ -1,0 +1,122 @@
+paths:
+  /v1/tuitions/{uuid}:
+    parameters:
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: Tuition UUID
+    get:
+      summary: Get tuition by UUID
+      tags: [Tuitions]
+      responses:
+        '200':
+          description: Tuition details
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/tuition.yml#/Tuition'
+        '404':
+          description: Tuition not found
+        '401':
+          description: Unauthorized
+    put:
+      summary: Update tuition payment status
+      tags: [Tuitions]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                isPaid:
+                  type: boolean
+                  description: Whether the tuition has been paid
+      responses:
+        '200':
+          description: Tuition updated successfully
+        '400':
+          description: Invalid input data
+        '404':
+          description: Tuition not found
+        '401':
+          description: Unauthorized
+
+  /v1/tuitions/barcode/{barcode}:
+    parameters:
+      - name: barcode
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Payment barcode
+    get:
+      summary: Get tuition by barcode
+      tags: [Tuitions]
+      responses:
+        '200':
+          description: Tuition details
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/tuition.yml#/Tuition'
+        '404':
+          description: Tuition not found
+        '401':
+          description: Unauthorized
+
+  /v1/tuitions/messages:
+    post:
+      summary: Create a tuition message
+      tags: [Tuition Messages]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - tuition
+                - userName
+                - message
+              properties:
+                tuition:
+                  type: string
+                  format: uuid
+                  description: Tuition UUID
+                userName:
+                  type: string
+                  description: Name of the user creating the message
+                message:
+                  type: string
+                  description: Message content
+      responses:
+        '201':
+          description: Message created successfully
+        '400':
+          description: Invalid input data
+        '401':
+          description: Unauthorized
+
+  /v1/tuitions/messages/{uuid}:
+    parameters:
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: Message UUID
+    delete:
+      summary: Delete a tuition message
+      tags: [Tuition Messages]
+      responses:
+        '204':
+          description: Message deleted successfully
+        '404':
+          description: Message not found
+        '401':
+          description: Unauthorized 

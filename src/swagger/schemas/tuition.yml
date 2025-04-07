@@ -1,0 +1,64 @@
+Tuition:
+  type: object
+  required:
+    - uuid
+    - enrollment
+    - dueDate
+    - amount
+    - isPaid
+  properties:
+    uuid:
+      type: string
+      format: uuid
+      description: Tuition UUID
+    enrollment:
+      type: string
+      format: uuid
+      description: Associated enrollment UUID
+    dueDate:
+      type: string
+      format: date
+      description: Payment due date
+    amount:
+      type: number
+      format: float
+      description: Tuition amount
+    isPaid:
+      type: boolean
+      description: Whether the tuition has been paid
+    barcode:
+      type: string
+      description: Payment barcode
+    messages:
+      type: array
+      description: Tuition payment messages
+      items:
+        $ref: '#/TuitionMessage'
+
+TuitionMessage:
+  type: object
+  required:
+    - uuid
+    - tuition
+    - userName
+    - message
+    - createdAt
+  properties:
+    uuid:
+      type: string
+      format: uuid
+      description: Message UUID
+    tuition:
+      type: string
+      format: uuid
+      description: Associated tuition UUID
+    userName:
+      type: string
+      description: Name of the user who created the message
+    message:
+      type: string
+      description: Message content
+    createdAt:
+      type: string
+      format: date-time
+      description: Message creation timestamp 
