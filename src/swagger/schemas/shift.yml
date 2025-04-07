@@ -1,0 +1,23 @@
+Shift:
+  type: object
+  required:
+    - id
+    - name
+    - startTime
+    - endTime
+  properties:
+    id:
+      type: integer
+      minimum: 1
+      description: Shift ID
+    name:
+      type: string
+      description: Shift name (e.g., Morning, Afternoon)
+    startTime:
+      type: string
+      format: time
+      description: Shift start time
+    endTime:
+      type: string
+      format: time
+      description: Shift end time 

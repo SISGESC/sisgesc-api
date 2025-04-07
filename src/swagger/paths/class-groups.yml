@@ -1,0 +1,16 @@
+paths:
+  /v1/classes:
+    get:
+      summary: List all class groups
+      tags: [Class Groups]
+      responses:
+        '200':
+          description: List of class groups
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../schemas/class-group.yml#/ClassGroup'
+        '401':
+          description: Unauthorized 
