@@ -1,0 +1,103 @@
+paths:
+  /v1/enrollments:
+    post:
+      summary: Create a new enrollment
+      tags: [Enrollments]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Enrollment'
+      responses:
+        '201':
+          description: Enrollment created successfully
+        '400':
+          description: Invalid input data
+        '401':
+          description: Unauthorized
+    get:
+      summary: List all enrollments
+      tags: [Enrollments]
+      responses:
+        '200':
+          description: List of enrollments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#Enrollment'
+        '401':
+          description: Unauthorized
+
+  /v1/enrollments/{uuid}:
+    parameters:
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: Enrollment UUID
+    get:
+      summary: Get enrollment by UUID
+      tags: [Enrollments]
+      responses:
+        '200':
+          description: Enrollment details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Enrollment'
+        '404':
+          description: Enrollment not found
+        '401':
+          description: Unauthorized
+    put:
+      summary: Update an enrollment
+      tags: [Enrollments]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                classGroup:
+                  type: integer
+                  minimum: 1
+                shift:
+                  type: integer
+                  minimum: 1
+                isDaycare:
+                  type: boolean
+                status:
+                  type: boolean
+                studentName:
+                  type: string
+                birthday:
+                  type: string
+                  format: date
+                gender:
+                  type: string
+                  enum: [M, F]
+      responses:
+        '200':
+          description: Enrollment updated successfully
+        '400':
+          description: Invalid input data
+        '404':
+          description: Enrollment not found
+        '401':
+          description: Unauthorized
+    delete:
+      summary: Delete an enrollment
+      tags: [Enrollments]
+      responses:
+        '204':
+          description: Enrollment deleted successfully
+        '404':
+          description: Enrollment not found
+        '401':
+          description: Unauthorized 

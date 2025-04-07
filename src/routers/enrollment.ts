@@ -11,99 +11,6 @@ import { deleteEnrollment } from '../handlers/enrollment/delete-enrollment';
 const enrollmentRouter = Router();
 const v1 = Router();
 
-/**
- * @swagger
- * components:
- *   schemas:
- *     Enrollment:
- *       type: object
- *       required:
- *         - parent
- *         - classGroup
- *         - shift
- *         - isDaycare
- *         - student
- *         - billing
- *       properties:
- *         parent:
- *           type: string
- *           description: Parent ID
- *         classGroup:
- *           type: integer
- *           minimum: 1
- *           description: Class group ID
- *         shift:
- *           type: integer
- *           minimum: 1
- *           description: Shift ID
- *         isDaycare:
- *           type: boolean
- *           description: Whether the enrollment is for daycare
- *         student:
- *           type: object
- *           required:
- *             - name
- *             - gender
- *             - birthday
- *           properties:
- *             name:
- *               type: string
- *               description: Student's full name
- *             gender:
- *               type: string
- *               enum: [M, F]
- *               description: Student's gender
- *             birthday:
- *               type: string
- *               format: date
- *               description: Student's birthday
- *         billing:
- *           type: object
- *           required:
- *             - fees
- *             - dueDay
- *           properties:
- *             fees:
- *               type: object
- *               required:
- *                 - initial
- *                 - recurring
- *               properties:
- *                 initial:
- *                   type: number
- *                   format: float
- *                   description: Initial enrollment fee
- *                 recurring:
- *                   type: number
- *                   format: float
- *                   description: Recurring monthly fee
- *             dueDay:
- *               type: integer
- *               minimum: 1
- *               maximum: 28
- *               description: Day of the month when payment is due
- */
-
-/**
- * @swagger
- * /v1/enrollments:
- *   post:
- *     summary: Create a new enrollment
- *     tags: [Enrollments]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Enrollment'
- *     responses:
- *       201:
- *         description: Enrollment created successfully
- *       400:
- *         description: Invalid input data
- *       401:
- *         description: Unauthorized
- */
 v1.post(
   '/',
 
@@ -125,56 +32,12 @@ v1.post(
   createEnrollment
 );
 
-/**
- * @swagger
- * /v1/enrollments:
- *   get:
- *     summary: List all enrollments
- *     tags: [Enrollments]
- *     responses:
- *       200:
- *         description: List of enrollments
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Enrollment'
- *       401:
- *         description: Unauthorized
- */
 v1.get(
   '/',
   checkExact([], { message: 'Only the specified fields are allowed' }),
   listEnrollments,
 );
 
-/**
- * @swagger
- * /v1/enrollments/{uuid}:
- *   get:
- *     summary: Get enrollment by UUID
- *     tags: [Enrollments]
- *     parameters:
- *       - in: path
- *         name: uuid
- *         required: true
- *         schema:
- *           type: string
- *           format: uuid
- *         description: Enrollment UUID
- *     responses:
- *       200:
- *         description: Enrollment details
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Enrollment'
- *       404:
- *         description: Enrollment not found
- *       401:
- *         description: Unauthorized
- */
 v1.get(
   '/:uuid',
   param('uuid').isUUID().withMessage('UUID must be a valid UUID'),
@@ -182,55 +45,7 @@ v1.get(
   getEnrollmentByUUID,
 );
 
-/**
- * @swagger
- * /v1/enrollments/{uuid}:
- *   put:
- *     summary: Update an enrollment
- *     tags: [Enrollments]
- *     parameters:
- *       - in: path
- *         name: uuid
- *         required: true
- *         schema:
- *           type: string
- *           format: uuid
- *         description: Enrollment UUID
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               classGroup:
- *                 type: integer
- *                 minimum: 1
- *               shift:
- *                 type: integer
- *                 minimum: 1
- *               isDaycare:
- *                 type: boolean
- *               status:
- *                 type: boolean
- *               studentName:
- *                 type: string
- *               birthday:
- *                 type: string
- *                 format: date
- *               gender:
- *                 type: string
- *                 enum: [M, F]
- *     responses:
- *       200:
- *         description: Enrollment updated successfully
- *       400:
- *         description: Invalid input data
- *       404:
- *         description: Enrollment not found
- *       401:
- *         description: Unauthorized
- */
+
 v1.put(
   '/:uuid',
   param('uuid').isUUID().withMessage('UUID must be a valid UUID'),
@@ -247,28 +62,6 @@ v1.put(
   updateEnrollment,
 );
 
-/**
- * @swagger
- * /v1/enrollments/{uuid}:
- *   delete:
- *     summary: Delete an enrollment
- *     tags: [Enrollments]
- *     parameters:
- *       - in: path
- *         name: uuid
- *         required: true
- *         schema:
- *           type: string
- *           format: uuid
- *         description: Enrollment UUID
- *     responses:
- *       204:
- *         description: Enrollment deleted successfully
- *       404:
- *         description: Enrollment not found
- *       401:
- *         description: Unauthorized
- */
 v1.delete(
   '/:uuid',
   param('uuid').isUUID().withMessage('UUID must be a valid UUID'),
