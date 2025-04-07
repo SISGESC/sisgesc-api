@@ -1,0 +1,46 @@
+{
+  "name": "sisgesc-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --build",
+    "start": "node ./dist/server.js",
+    "start:dev": "nodemon ./src/server.ts",
+    "typeorm": "ts-node ./node_modules/typeorm/cli",
+    "typeorm:drop-schema": "npm run typeorm schema:drop -- -d ./src/database/app-data-source.ts",
+    "typeorm:run-migrations": "npm run typeorm migration:run -- -d ./src/database/app-data-source.ts",
+    "typeorm:create-migration": "npm run typeorm -- migration:create ./src/database/migrations/$npm_config_name",
+    "typeorm:generate-migration": "npm run typeorm -- -d ./src/database/app-data-source.ts migration:generate ./src/database/migrations/$npm_config_name"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dejardim/sisgesc-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dejardim/sisgesc-api/issues"
+  },
+  "homepage": "https://github.com/dejardim/sisgesc-api#readme",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "pg": "^8.14.1",
+    "quoti-auth": "^1.2.4",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.22"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.14.0",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
