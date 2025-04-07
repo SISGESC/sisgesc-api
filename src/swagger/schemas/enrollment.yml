@@ -1,0 +1,67 @@
+Enrollment:
+  type: object
+  required:
+    - parent
+    - classGroup
+    - shift
+    - isDaycare
+    - student
+    - billing
+  properties:
+    parent:
+      type: string
+      description: Parent ID
+    classGroup:
+      type: integer
+      minimum: 1
+      description: Class group ID
+    shift:
+      type: integer
+      minimum: 1
+      description: Shift ID
+    isDaycare:
+      type: boolean
+      description: Whether the enrollment is for daycare
+    student:
+      type: object
+      required:
+        - name
+        - gender
+        - birthday
+      properties:
+        name:
+          type: string
+          description: Student's full name
+        gender:
+          type: string
+          enum: [M, F]
+          description: Student's gender
+        birthday:
+          type: string
+          format: date
+          description: Student's birthday
+    billing:
+      type: object
+      required:
+        - fees
+        - dueDay
+      properties:
+        fees:
+          type: object
+          required:
+            - initial
+            - recurring
+          properties:
+            initial:
+              type: number
+              format: float
+              description: Initial enrollment fee
+            recurring:
+              type: number
+              format: float
+              description: Recurring monthly fee
+        dueDay:
+          type: integer
+          minimum: 1
+          maximum: 28
+          description: Day of the month when payment is due 

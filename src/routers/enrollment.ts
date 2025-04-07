@@ -45,6 +45,7 @@ v1.get(
   getEnrollmentByUUID,
 );
 
+
 v1.put(
   '/:uuid',
   param('uuid').isUUID().withMessage('UUID must be a valid UUID'),

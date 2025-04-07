@@ -1,0 +1,18 @@
+ClassGroup:
+  type: object
+  required:
+    - id
+    - name
+    - capacity
+  properties:
+    id:
+      type: integer
+      minimum: 1
+      description: Class group ID
+    name:
+      type: string
+      description: Class group name
+    capacity:
+      type: integer
+      minimum: 1
+      description: Maximum number of students in the class 
