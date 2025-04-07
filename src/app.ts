@@ -4,6 +4,10 @@ import bodyParser from 'body-parser';
 
 import 'reflect-metadata';
 import { AppDataSource } from './database/app-data-source';
+import enrollmentRouter from './routers/enrollment';
+import classGroupRouter from './routers/class-group';
+import shiftRouter from './routers/shift';
+import tuitionRouter from './routers/tuition';
 
 export const createExpressApp = async () => {
   try {
@@ -21,7 +25,10 @@ export const createExpressApp = async () => {
     origin: ['https://quoti.cloud']
   }));
 
-  // app.use('/api/enrollments', enrollmentRouter);
+  app.use('/', enrollmentRouter);
+  app.use('/', classGroupRouter);
+  app.use('/', shiftRouter);
+  app.use('/', tuitionRouter);
 
   return app;
 };

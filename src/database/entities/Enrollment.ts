@@ -52,6 +52,21 @@ export class Enrollment {
   })
   isDaycare: boolean;
 
+  @Column({
+    type: 'date',
+    nullable: true,
+    comment: 'Birthday of the student'
+  })
+  birthday: string;
+
+  @Column({
+    type: 'varchar',
+    length: 1,
+    nullable: true,
+    comment: 'Gender of the student (Male or Female)'
+  })
+  gender: string;
+
   @CreateDateColumn({ 
     name: 'created_at',
     type: 'timestamptz',

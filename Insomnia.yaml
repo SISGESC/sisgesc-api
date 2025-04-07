@@ -1,0 +1,308 @@
+type: collection.insomnia.rest/5.0
+name: ESS
+meta:
+  id: wrk_767c8dce56b047a5a5ebc1417d244d70
+  created: 1743995038326
+  modified: 1743995038326
+collection:
+  - name: SISGESC
+    meta:
+      id: fld_ea7395b6b12040e6837a3f0dbca866d8
+      created: 1743995116196
+      modified: 1743995116196
+      sortKey: -1743995116196
+    children:
+      - name: CRUD Matriculas
+        meta:
+          id: fld_8ff1f09035654d2eb7e75bf7c9eed6e6
+          created: 1744004060403
+          modified: 1744004103128
+          sortKey: -1744004060603
+        children:
+          - url: localhost:3000/v1/enrollments/
+            name: Cria matricula
+            meta:
+              id: req_d70d645ebbd64572bc0060caa62b7716
+              created: 1743995121108
+              modified: 1744004072133
+              isPrivate: false
+              sortKey: -1744004066230.5
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"parent": "uuid",
+                	"classGroup": 1,
+                	"shift": 1,
+                	"isDaycare": false,
+                	"student": {
+                		"name": "aabbccc",
+                		"gender": "M",
+                		"birthday": "01/05/2001"
+                	},
+                	"billing": {
+                		"fees": {
+                			"initial": "3",
+                			"recurring": "9"
+                		},
+                		"dueDay": "5"
+                	}
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.0.2
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: localhost:3000/v1/enrollments/
+            name: Lista matriculas
+            meta:
+              id: req_30da0af516ad47f3a8064ce9a590b42b
+              created: 1743996760109
+              modified: 1744004070585
+              isPrivate: false
+              sortKey: -1744004066243
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.0.2
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: localhost:3000/v1/enrollments/9f2fa1fe-554f-4712-95cc-f8c07331d414
+            name: Get matricula
+            meta:
+              id: req_851629ad2e52472aaa69cb817e90c30b
+              created: 1743997958745
+              modified: 1744004411064
+              isPrivate: false
+              sortKey: -1744004066268
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.0.2
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: localhost:3000/v1/enrollments/c74a55b1-2b7f-4127-b910-c2860e054f79
+            name: Atualizar matricula
+            meta:
+              id: req_e97bb895c7de433aa708a02251893187
+              created: 1743999414533
+              modified: 1744004066280
+              isPrivate: false
+              sortKey: -1744004066218
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"studentName": "teste",
+                	"isDaycare": true,
+                	"gender": "F",
+                	"classGroup": 3,
+                	"shift": 2,
+                	"birthday":  "09/29/2001"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.0.2
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: localhost:3000/v1/enrollments/c74a55b1-2b7f-4127-b910-c2860e054f79
+            name: Deletar matricula
+            meta:
+              id: req_641082f97cf24bdbb9202784d82e69e7
+              created: 1744000118600
+              modified: 1744004067865
+              isPrivate: false
+              sortKey: -1744004066318
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/11.0.2
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - url: localhost:3000/v1/classes/
+        name: Listar turmas
+        meta:
+          id: req_fe78880e2b984f98a2ddf105e1b802cf
+          created: 1744004079827
+          modified: 1744004144689
+          isPrivate: false
+          sortKey: -1744004060503
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/v1/shifts/
+        name: Listar turnos
+        meta:
+          id: req_7987d845b03748dab6750376858c4dd6
+          created: 1744004148795
+          modified: 1744004181487
+          isPrivate: false
+          sortKey: -1744004060403
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/v1/tuitions/barcode/5512202420714784785475
+        name: Get mensalidade por barcode
+        meta:
+          id: req_1341263a9ce440a193f8bdba3c2502e1
+          created: 1744004206374
+          modified: 1744006378115
+          isPrivate: false
+          sortKey: -1744004060303
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/v1/tuitions/a3a60427-4457-4e7e-b85f-9c048cce1686
+        name: Atualizar status da mensalidade
+        meta:
+          id: req_9da67b4d882b49ca805e28ed31c7bc32
+          created: 1744004779007
+          modified: 1744004985154
+          isPrivate: false
+          sortKey: -1744004060203
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"isPaid": true
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/v1/tuitions/messages
+        name: Criar mensagem na mensalidade
+        meta:
+          id: req_2a7efde59b484655878ce368df110b62
+          created: 1744004988983
+          modified: 1744006129722
+          isPrivate: false
+          sortKey: -1744004060103
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"tuition": "a3a60427-4457-4e7e-b85f-9c048cce1686",
+            	"message": "ccccc",
+            	"userName": "aaaa" 
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/v1/tuitions/messages/1c899c62-c127-4aa3-beca-2c4d58cf79bb
+        name: Apagar mensagem da mensalidade
+        meta:
+          id: req_c3818468db2e4a938d23dbc0c706bb60
+          created: 1744006147317
+          modified: 1744006184157
+          isPrivate: false
+          sortKey: -1743940583362.125
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_d899364eabb758c2ef430e1386f73c6b409dfa43
+    created: 1743995038329
+    modified: 1743995038329
+environments:
+  name: Base Environment
+  meta:
+    id: env_d899364eabb758c2ef430e1386f73c6b409dfa43
+    created: 1743995038328
+    modified: 1743995038328
+    isPrivate: false

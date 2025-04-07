@@ -30,6 +30,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
+    "express-validator": "^7.2.1",
     "pg": "^8.14.1",
     "quoti-auth": "^1.2.4",
     "reflect-metadata": "^0.2.2",

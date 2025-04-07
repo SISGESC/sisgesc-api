@@ -6,8 +6,8 @@ import { Enrollment } from './entities/Enrollment';
 import { Tuition } from './entities/Tuition';
 import { TuitionMessage } from './entities/TuitionMessage';
 
-import { StartDatabase1743987583531 } from './migrations/1743987583531-StartDatabase';
-import { InitialRows1743987625757 } from './migrations/1743987625757-InitialRows';
+import { StartDatabase1743992773908 } from './migrations/1743992773908-StartDatabase';
+import { InitialRows1743992818313 } from './migrations/1743992818313-InitialRows';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -24,8 +24,8 @@ export const AppDataSource = new DataSource({
     TuitionMessage,
   ],
   migrations: [
-    StartDatabase1743987583531,
-    InitialRows1743987625757,
+    StartDatabase1743992773908,
+    InitialRows1743992818313,
   ],
   logging: false,
   synchronize: false,

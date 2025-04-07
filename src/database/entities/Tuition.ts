@@ -61,7 +61,7 @@ export class Tuition {
     nullable: true,
     comment: 'Date when the payment was mark as paid'
   })
-  paidAt: Date;
+  paidAt: Date | null;
 
   @CreateDateColumn({ 
     name: 'created_at',
